@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head th:insert="~{layout :: htmlhead}"></head>
+    <body>
+        <nav th:replace="~{layout :: menu}">(menu)</nav>
+
+        <div class="container">
+            <h1>Book</h1>
+            <form th:action="@{/books/(form)}" th:object="${book}" method="POST">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="name">Name:</label>
+                            <input class="form-control" th:field="*{name}" type="text" id="name">
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="status">Status:</label>
+                            <select class="form-control" th:field="*{status}" name="status" id="status">
+                                <option value="1">Lido</option>
+                                <option value="2">Lendo</option>
+                                <option value="3">Pendente</option>
+                            </select>
+                            <p th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="alert alert-danger" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" name="save" class="btn btn-primary">Submit</button>
+                <a href="/books" class="btn btn-primary">Cancel</a>
+            </form>
+        </div>
+        
+        <div th:insert="~{layout :: footer}">(footer)</div>
+    </body>
+</html>
