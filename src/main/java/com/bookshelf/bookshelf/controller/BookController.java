@@ -22,7 +22,7 @@ public class BookController {
 
     @GetMapping
     public ModelAndView getAll() {
-        return new ModelAndView("book/index", "book", service.getAll());
+        return new ModelAndView("book/index", "books", service.getAll());
     }
 
     @GetMapping("/new")
@@ -30,7 +30,7 @@ public class BookController {
         return new ModelAndView("book/form", "book", new BookDTO());
     }
     
-    @PostMapping(params = "form")
+    @PostMapping
     public ModelAndView save(@ModelAttribute("book") BookDTO book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("book/form");

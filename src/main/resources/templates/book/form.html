@@ -6,7 +6,7 @@
 
         <div class="container">
             <h1>Book</h1>
-            <form th:action="@{/books/(form)}" th:object="${book}" method="POST">
+            <form th:action="@{/books}" th:object="${book}" method="POST">
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">
                     <div class="row">
@@ -22,9 +22,9 @@
                         <div class="col-6">
                             <label for="status">Status:</label>
                             <select class="form-control" th:field="*{status}" name="status" id="status">
-                                <option value="1">Lido</option>
-                                <option value="2">Lendo</option>
-                                <option value="3">Pendente</option>
+                                <option value="1">Read</option>
+                                <option value="2">Reading</option>
+                                <option value="3">Pending</option>
                             </select>
                             <p th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="alert alert-danger" />
                         </div>

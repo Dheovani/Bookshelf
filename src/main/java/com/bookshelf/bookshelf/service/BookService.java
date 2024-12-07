@@ -43,7 +43,7 @@ public class BookService {
         if (entity.isPresent()) {
             Book book = entity.get();
             repository.delete(book);
-            mapper.mapBook(book);
+            return mapper.mapBook(book);
         }
 
         return null;
