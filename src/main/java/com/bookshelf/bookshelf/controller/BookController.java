@@ -1,5 +1,7 @@
 package com.bookshelf.bookshelf.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,7 +24,16 @@ public class BookController {
 
     @GetMapping
     public ModelAndView getAll() {
-        return new ModelAndView("book/index", "books", service.getAll());
+        ModelAndView mav = new ModelAndView("book/index");
+
+        mav.addObject("books", service.getAll());
+        mav.addObject("statusMap", Map.of(
+            1, "Read",
+            2, "Reading",
+            3, "Pending"
+        ));
+        
+        return mav;
     }
 
     @GetMapping("/new")

@@ -20,7 +20,7 @@
                 <tr th:each="obj: ${books}">
                     <td th:text="${obj.id}"></td>
                     <td th:text="${obj.name}"></td>
-                    <td th:text="${obj.status}"></td>
+                    <td th:text="${statusMap[obj.status]}"></td>
                     <td>
                         <a th:href="@{'/books/update/'+${obj.id}}" class="btn btn-primary">Update</a>
                         <button class="btn btn-danger js-delete" th:data-id="${obj.id}">Delete</button>
