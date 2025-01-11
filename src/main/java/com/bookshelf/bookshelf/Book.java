@@ -1,4 +1,4 @@
-package com.bookshelf.bookshelf.entities;
+package com.bookshelf.bookshelf;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

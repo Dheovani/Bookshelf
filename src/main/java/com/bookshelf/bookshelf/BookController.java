@@ -1,4 +1,4 @@
-package com.bookshelf.bookshelf.controller;
+package com.bookshelf.bookshelf;
 
 import java.util.Map;
 
@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.bookshelf.bookshelf.data.BookDTO;
-import com.bookshelf.bookshelf.service.BookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,11 +35,11 @@ public class BookController {
 
     @GetMapping("/new")
     public ModelAndView newBook() {
-        return new ModelAndView("book/form", "book", new BookDTO());
+        return new ModelAndView("book/form", "book", new Book());
     }
     
     @PostMapping
-    public ModelAndView save(@ModelAttribute("book") BookDTO book, BindingResult bindingResult) {
+    public ModelAndView save(@ModelAttribute("book") Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("book/form");
         }
